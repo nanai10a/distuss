@@ -22,9 +22,8 @@ async fn main() {
 
     Client::builder(token, intents)
         .event_handler(Handler {
-            states: States {
-                inner: Mutex::new(HashMap::new()),
-            },
+            printer: Printer::new(),
+            states: States::new(),
         })
         .await
         .unwrap()
@@ -34,7 +33,71 @@ async fn main() {
 }
 
 struct Handler {
+    printer: Printer,
     states: States,
+}
+
+struct Printer {
+    browser: headless_chrome::Browser,
+}
+
+impl Printer {
+    fn new() -> Self {
+        let opts = headless_chrome::LaunchOptions {
+            headless: true,
+            ..Default::default()
+        };
+
+        let browser = headless_chrome::Browser::new(opts).unwrap();
+
+        Self { browser }
+    }
+}
+
+use serenity::model::channel::Message;
+
+impl Printer {
+    fn print(&self, msgs: impl Iterator<Item = Message>) -> Vec<u8> {
+        use headless_chrome::protocol::cdp::Page::CaptureScreenshotFormatOption;
+        use headless_chrome::protocol::cdp::Target::CreateTarget;
+
+        let tmp = "/tmp/index.html";
+        let url = "file:///tmp/index.html".to_string();
+
+        let mut content = String::new();
+        content.push_str("<html><body><ul>");
+        msgs.for_each(|msg| {
+            content.push_str("<li>");
+            content.push_str(&msg.content);
+            content.push_str("</li>");
+        });
+        content.push_str("</ul></body></html>");
+
+        std::fs::write(tmp, content).unwrap();
+
+        let tab = self.browser.new_tab_with_options(CreateTarget {
+            url,
+            width: None,
+            height: None,
+            browser_context_id: None,
+            enable_begin_frame_control: None,
+            new_window: None,
+            background: None,
+        }).unwrap();
+
+        std::fs::remove_file(tmp).unwrap();
+
+        let elem = tab.wait_for_element("ul").unwrap();
+        let vp = elem.get_box_model().unwrap().margin_viewport();
+
+        tab
+            .capture_screenshot(CaptureScreenshotFormatOption::Png, None, Some(vp), true)
+            .unwrap()
+    }
+}
+
+impl States {
+    fn new() -> Self { Self { inner: Mutex::new(HashMap::new()) } }
 }
 
 #[async_trait]
@@ -115,17 +178,13 @@ impl EventHandler for Handler {
                 panic!("not found end message");
             }
 
-            let content = messages
-                .into_iter()
-                .rev()
-                .map(|msg| format!("- {}\n", msg.content.chars().take(10).collect::<String>()))
-                .collect::<String>();
+            let image = self.printer.print(messages.into_iter().rev());
 
             interaction
                 .create_interaction_response(&ctx.http, |builder| {
                     builder
                         .kind(InteractionResponseType::ChannelMessageWithSource)
-                        .interaction_response_data(|data| data.content(content))
+                        .interaction_response_data(|data| data.add_file((&*image, "capture.png")))
                 })
                 .await
                 .unwrap();
