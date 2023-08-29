@@ -79,29 +79,35 @@ impl Printer {
 
         std::fs::write(tmp, content).unwrap();
 
-        let tab = self.browser.new_tab_with_options(CreateTarget {
-            url,
-            width: None,
-            height: None,
-            browser_context_id: None,
-            enable_begin_frame_control: None,
-            new_window: None,
-            background: None,
-        }).unwrap();
+        let tab = self
+            .browser
+            .new_tab_with_options(CreateTarget {
+                url,
+                width: None,
+                height: None,
+                browser_context_id: None,
+                enable_begin_frame_control: None,
+                new_window: None,
+                background: None,
+            })
+            .unwrap();
 
         std::fs::remove_file(tmp).unwrap();
 
         let elem = tab.wait_for_element("ul").unwrap();
         let vp = elem.get_box_model().unwrap().margin_viewport();
 
-        tab
-            .capture_screenshot(CaptureScreenshotFormatOption::Png, None, Some(vp), true)
+        tab.capture_screenshot(CaptureScreenshotFormatOption::Png, None, Some(vp), true)
             .unwrap()
     }
 }
 
 impl States {
-    fn new() -> Self { Self { inner: Mutex::new(HashMap::new()) } }
+    fn new() -> Self {
+        Self {
+            inner: Mutex::new(HashMap::new()),
+        }
+    }
 }
 
 #[async_trait]
