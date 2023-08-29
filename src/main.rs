@@ -50,6 +50,10 @@ impl Printer {
 
         let browser = headless_chrome::Browser::new(opts).unwrap();
 
+        // for keeping to alive browser window
+        // in headless, initially tabs are only 1, consumes when first request
+        browser.new_tab().unwrap();
+
         Self { browser }
     }
 }
