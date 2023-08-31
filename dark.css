@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+p {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "M PLUS 2";
+}
+
+code {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "M PLUS Code Latin";
+}
+
+:root {
+  background-color: #313338;
+}
+
+#list {
+  min-height: 0;
+  overflow: hidden;
+  list-style: none;
+  padding-bottom: 1.0625rem;
+}
+
+.item {
+  outline: none;
+  position: relative;
+}
+
+.message {
+  margin-top: 1.0625rem;
+  min-height: 2.75rem;
+  padding: .125rem 48px .125rem 72px;
+  position: relative;
+  word-wrap: break-word;
+  user-select: text;
+  outline: 0;
+}
+
+.contents {
+  position: static;
+  margin-left: 0;
+  padding-left: 0;
+  text-align: 0;
+  outline: 0;
+}
+
+.avatar::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  text-indent: -9999px;
+  position: absolute;
+  left: 16px;
+  margin-top: calc(4px - .125rem);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.header {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  line-height: 1.375rem;
+  min-height: 1.375rem;
+  color: rgb(148, 155, 164);
+  white-space: break-spaces;
+}
+
+.username {
+  margin-right: 0;
+  outline: 0;
+}
+
+.username > span {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.375rem;
+  display: inline;
+  vertical-align: baseline;
+  position: relative;
+  overflow: hidden;
+  outline: 0;
+  color: rgb(242, 243, 245);
+}
+
+.role-icon::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.role-icon {
+  outline: 0;
+  text-indent: -9999px;
+  margin-left: .25rem;
+  vertical-align: top;
+  position: relative;
+  top: 1px;
+  height: calc(1rem + 4px);
+  width: calc(1rem + 4px);
+  display: inline-block;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  line-height: 1.375rem;
+  color: rgb(148, 155, 164);
+  vertical-align: baseline;
+  margin-left: .25rem;
+  display: inline-block;
+  height: 1.25rem;
+  font-weight: 500;
+  outline: 0;
+}
+
+.content {
+  margin-left: -72px;
+  padding-left: 72px;
+  overflow: hidden;
+  position: relative;
+  text-indent: 0;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  white-space: break-spaces;
+  word-wrap: break-word;
+  color: rgb(219, 222, 225);
+  outline: 0;
+}
