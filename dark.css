@@ -17,7 +17,7 @@ p {
 code {
   font-weight: 400;
   font-style: normal;
-  font-family: "M PLUS Code Latin";
+  font-family: "JetBrains Mono";
 }
 
 :root {
@@ -146,4 +146,33 @@ code {
   word-wrap: break-word;
   color: rgb(219, 222, 225);
   outline: 0;
+}
+
+.content blockquote, .content pre {
+  box-sizing: border-box;
+  max-width: 90%;
+}
+
+.content pre {
+  border-radius: 4px;
+  padding: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 6px;
+  white-space: pre-wrap;
+  background-clip: border-box;
+}
+
+.content pre code {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  text-indent: 0;
+  white-space: pre-wrap;
+  background: rgb(43, 45, 49);
+  border: 1px solid rgb(30, 31, 34);
+
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  border-radius: 5px;
 }
