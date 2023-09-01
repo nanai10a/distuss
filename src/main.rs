@@ -211,6 +211,14 @@ async fn messages_to_html(
     );
 
     let _ = vdom.rebuild();
+    // let html = {
+    //     let plain = format!("<!DOCTYPE html><html>{}</html>", dioxus_ssr::render(&vdom));
+    //     let bytes = minify_html::minify(plain.as_bytes(), &minify_html::Cfg::spec_compliant());
+    //     String::from_utf8(bytes).unwrap()
+    // };
+    //
+    // html
+
     format!("<!DOCTYPE html><html>{}</html>", dioxus_ssr::render(&vdom))
 }
 
