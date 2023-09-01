@@ -199,7 +199,7 @@ async fn messages_to_html(
               body {
                 style { dangerous_inner_html: include_str!("../dark.css") }
 
-                ul { id: "list",
+                ol { id: "list",
                   cx.props.iter().map(|html| {
                     rsx! { li { class: "item", dangerous_inner_html: &**html } }
                   })
