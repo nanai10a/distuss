@@ -9,6 +9,7 @@ edition = "2021"
 dioxus = { version = "0.4.0", default-features = false, features = ["html", "macro"] }
 dioxus-ssr = "0.4.0"
 headless_chrome = "1.0.5"
+minify-html = "0.11.1"
 pulldown-cmark = "0.9.3"
 serenity = { version = "0.11.6", default-features = false, features = ["rustls_backend", "builder", "client", "gateway", "model", "chrono", "cache"] }
 tokio = { version = "1.32.0", features = ["full"] }
