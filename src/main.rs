@@ -194,7 +194,7 @@ async fn messages_to_html(
               head {
                 meta { charset: "utf-8" }
                 meta { name: "viewport", content: "width=device-width,initial-scale=1" }
-                link { href: "https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" }
+                link { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" }
               }
               body {
                 style { dangerous_inner_html: include_str!("../dark.css") }
