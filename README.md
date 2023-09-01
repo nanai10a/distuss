@@ -6,6 +6,11 @@ distuss: partly distense or obscure
 
 ---
 
+## project status
+
+currently, it's extreamly unstable, versioned as `0.0.0`.
+please for using of interest-based, or few reference only. not for practical use.
+
 ## usage
 
 using cargo, do build and run.
