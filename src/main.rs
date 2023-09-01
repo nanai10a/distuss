@@ -158,7 +158,7 @@ async fn message_to_html(cache_http: impl CacheHttp, msg: &Message) -> String {
                     span { class: "username", span { style: &*cx.props.username_style, &*cx.props.username } img { src: &*cx.props.role_icon } }
                     span { class: "timestamp", time { &*cx.props.timestamp } }
                   }
-                  div { class: "content", span { dangerous_inner_html: &*cx.props.content } }
+                  div { class: "content", dangerous_inner_html: &*cx.props.content }
                 }
               }
             }
