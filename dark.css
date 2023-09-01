@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=M+PLUS+2:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,11 @@
   font-style: inherit;
   font-family: inherit;
   font-size: 100%;
+}
+
+body {
+  line-height: 1;
+  text-rendering: optimizeLegibility;
 }
 
 p {
@@ -77,21 +84,21 @@ code {
   overflow: hidden;
   display: block;
   position: relative;
-  line-height: 1.375rem;
+  /* line-height: 1.375rem; */
   min-height: 1.375rem;
   color: rgb(148, 155, 164);
   white-space: break-spaces;
 }
 
 .username {
-  margin-right: 0;
+  margin-right: .25rem;
   outline: 0;
 }
 
 .username > span {
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.375rem;
+  /* line-height: 1.375rem; */
   display: inline;
   vertical-align: baseline;
   position: relative;
@@ -124,7 +131,7 @@ code {
 
 .timestamp {
   font-size: 0.75rem;
-  line-height: 1.375rem;
+  /* line-height: 1.375rem; */
   color: rgb(148, 155, 164);
   vertical-align: baseline;
   margin-left: .25rem;
@@ -148,7 +155,7 @@ code {
   outline: 0;
 }
 
-.content blockquote, .content pre {
+.content > blockquote, .content > pre {
   box-sizing: border-box;
   max-width: 90%;
 }
@@ -157,22 +164,119 @@ code {
   border-radius: 4px;
   padding: 0;
   font-size: 0.75rem;
-  line-height: 1rem;
+  /* line-height: 1rem; */
   margin-top: 6px;
   white-space: pre-wrap;
   background-clip: border-box;
 }
 
-.content pre code {
+.content pre > code {
   font-size: 0.875rem;
-  line-height: 1.125rem;
+  /* line-height: 1.125rem; */
   text-indent: 0;
   white-space: pre-wrap;
   background: rgb(43, 45, 49);
   border: 1px solid rgb(30, 31, 34);
 
-  display: block;
   overflow-x: auto;
   padding: .5em;
   border-radius: 5px;
+}
+
+code {
+  padding: .2em;
+  margin: -.2em 0;
+  border-radius: 3px;
+  font-size: 85%;
+  text-indent: 0;
+  border: none;
+  white-space: pre-wrap;
+
+  /* line-height: 1.125rem; */
+  background: rgb(43, 45, 49);
+}
+
+h1, h2, h3 /* , h4, h5, h6 */ {
+  font-family: "M PLUS 2";
+  font-weight: 700;
+  color: rgb(242, 243, 245);
+  line-height: 1.375em;
+}
+
+h1 {
+  margin-top: 8px;
+  font-size: 1.5rem;
+  margin: 16px 0 8px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 16px 0 8px;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 16px 0 8px;
+}
+
+h4::before {
+  content: "#### ";
+}
+
+h5::before {
+  content: "##### ";
+}
+
+h6::before {
+  content: "###### ";
+}
+
+a {
+  color: rgb(0, 168, 252);
+  word-break: break-word;
+  text-decoration: none;
+}
+
+.content ul {
+  list-style-type: disc;
+  margin: 4px 0 0 16px;
+  list-style-position: outside;
+}
+
+.content ol {
+  list-style-type: decimal;
+  margin: 4px 0 0 16px;
+  list-style-position: outside;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+  padding: 0 8px 0 calc(12px + 4px);
+  box-sizing: border-box;
+  text-indent: 0;
+
+  position: relative;
+  overflow: hidden;
+}
+
+blockquote::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 100%;
+  background-color: rgb(78, 80, 88);
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+}
+
+.content h1:first-child, .content h2:first-child {
+  margin-top: 8px;
 }
