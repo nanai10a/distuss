@@ -398,19 +398,12 @@ impl EventHandler for Handler {
                     builder
                         .kind(InteractionResponseType::ChannelMessageWithSource)
                         .interaction_response_data(|data| {
-                            let message_head = if message.content.chars().count() > 10 {
-                                message
-                                    .content
-                                    .chars()
-                                    .take(10)
-                                    .chain(['.', '.', '.'])
-                                    .collect::<String>()
-                            } else {
-                                message.content.clone()
-                            };
+                            let message_id = message.id;
+                            let channel_id = message.channel_id;
+                            let guild_id = message.guild_id.map(|id| id.to_string()).unwrap_or_else(|| "@me".to_string());
 
                             data.ephemeral(true)
-                                .content(format!("capture starting at \"{message_head}\""))
+                                .content(format!("capture starting at https://discord.com/channels/{guild_id}/{channel_id}/{message_id}"))
                         })
                 })
                 .await
