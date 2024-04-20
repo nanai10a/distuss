@@ -530,7 +530,7 @@ dependencies = [
 
 [[package]]
 name = "distuss"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "dioxus",
  "dioxus-ssr",
@@ -2196,9 +2196,9 @@ dependencies = [
 
 [[package]]
 name = "webpki"
-version = "0.22.0"
+version = "0.22.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f095d78192e208183081cc07bc5515ef55216397af48b873e5edcd72637fa1bd"
+checksum = "07ecc0cd7cac091bf682ec5efa18b1cff79d617b84181f38b3951dbe135f607f"
 dependencies = [
  "ring",
  "untrusted",
